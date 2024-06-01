@@ -4,13 +4,8 @@ pyNotesMaker is a Python-based tool that matches video scenes with corresponding
 
 ## Installation
 
-Clone the repository to your local machine:
+Clone the repository to your local machine, then navigate to the project directory:
 
-```bash
-git clone https://github.com/yourusername/pyNotesMaker.git
-```
-
-Navigate to the project directory:
 
 ```
 cd pyNotesMaker
