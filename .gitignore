@@ -1,0 +1,6 @@
+venv/
+__pycache__/
+.direnv/
+tmp/
+*.mp4
+*.txt
