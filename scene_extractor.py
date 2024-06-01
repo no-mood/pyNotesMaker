@@ -79,7 +79,7 @@ def extract_frames(filename, threshold, time_file = "tmp/time.txt"):
     print("Extracting scene...")
     
     duration = _get_video_duration(filename)
-    time_file = _extract_scenes(filename, threshold, time_file = time_file) #TODO uncomment this line
+    time_file = _extract_scenes(filename, threshold, time_file = time_file)
     frame_dict = _get_frames(time_file)
     frame_dict = convert_to_datetime(frame_dict, duration)
     

@@ -30,12 +30,5 @@ def make_subs(filename):
             file.write(str(start) + ' -->  ' + str(end) + '\n')
             file.write(segment['text'].strip() + '\n')
             file.write('\n')
-
-    # Generate the .txt file
-    # TODO uncomment or remove this 
-    # txt_file = filename + '.txt'
-    # with open(txt_file, "w") as file:
-    #    file.write("Converted text:\n")
-    #    file.write(result['text'])
     
     return vtt_file
