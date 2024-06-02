@@ -39,7 +39,7 @@ def _write_page_subs_to_file(page_subs, save_target):
     with open(save_target, 'w') as file:
         for end_page, text in grouped_text.items(): 
             # file.write(f"Page: {end_page}, Text: \n{text}\n\n")
-            file.write(f"\\begin{{slide}}{{{end_page}}}\n{text}\n\\end{{slide}}\n\n")
+            file.write(f"\\begin{{slide}}{{{end_page}}}\n\t{text}\n\\end{{slide}}\n\n")
 
 
 
