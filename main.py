@@ -1,4 +1,5 @@
 import argparse
+import os
 from scene_extractor import extract_frames
 from scene_matcher import match_scenes
 from subs_maker import make_subs
@@ -13,6 +14,12 @@ def main():
     parser.add_argument('-t', '--threshold', type=float, default=0.05, help='Threshold for scene detection')
     parser.add_argument('-o', '--output', help='Output file saved in "output/". Default is the video file name with .tex extension.')
     args = parser.parse_args()
+    
+    output_dir = "output/"
+    
+    os.makedirs(os.path.dirname(output_dir), exist_ok=True)
+    os.makedirs(os.path.dirname(frames_dir), exist_ok=True)
+
 
     video_file = args.video
     pdf_file = args.pdf

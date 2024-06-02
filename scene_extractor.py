@@ -1,5 +1,6 @@
 import subprocess
 import re
+import os
 from datetime import datetime, timedelta
 from collections import namedtuple
 
@@ -16,7 +17,10 @@ def _get_video_duration(filename):
 def _extract_scenes(filename, threshold, time_file = "tmp/time.txt"):
     # ffmpeg -i inputvideo.mp4 -filter_complex "[0:v]select='eq(n,0)+gt(scene,0.1)',metadata=print:file=time.txt" -vsync vfr img%03d.png
     
-    frame_name = "tmp/frames/%05d.jpg"
+    frames_dir = "tmp/frames/"
+    os.makedirs(os.path.dirname(frames_dir), exist_ok=True)
+    
+    frame_name = frames_dir + "%05d.jpg"
     command = [
         "ffmpeg", "-i", filename,
         "-filter:v", f"select='gt(scene,{threshold})',showinfo",
