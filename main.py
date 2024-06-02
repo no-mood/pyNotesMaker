@@ -4,7 +4,7 @@ from scene_extractor import extract_frames
 from scene_matcher import match_scenes
 from subs_maker import make_subs
 from subs_mapper import match_subs_to_pages
-
+import shutil
 
 def main():
     parser = argparse.ArgumentParser(description='Process some files.')
@@ -15,8 +15,11 @@ def main():
     parser.add_argument('-o', '--output', help='Output file saved in "output/". Default is "output.tex".')
     args = parser.parse_args()
 
+    working_dir = "tmp/"
     output_dir = "output/"
+    os.makedirs(working_dir, exist_ok=True)
     os.makedirs(output_dir, exist_ok=True)
+    
 
     video_file = args.video
     pdf_file = args.pdf
@@ -28,6 +31,11 @@ def main():
     page_dict = match_scenes(frame_dict = frame_dict, pdf_file = pdf_file)
     outfile = match_subs_to_pages(vtt_file = subs_file, page_dict = page_dict, save_target= out_file)
 
+    # Asks user if they want to delete the frames
+    delete_frames = input("Do you want to delete the created files? (y/N): ")
+    if delete_frames.lower() == "y":
+            shutil.rmtree(working_dir)
+    
     print(f"Output saved to {outfile}")
     print("Done")
 

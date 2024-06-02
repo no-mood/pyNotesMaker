@@ -37,19 +37,22 @@ def _match_frame_to_page(frame_text, pages_text, threshold=50):
 def match_scenes(frame_dict, pdf_file):
     frame_to_page_map = {}
     pages_text = _get_pdf_pages_text(pdf_file)
+    prev_page = 1
 
     # OCR all frame_text at the beginning for efficiency
     frame_texts = {frame_filename: _ocr_frame("tmp/frames/" + frame_filename) for frame_filename in frame_dict.keys()}
     
+    print("\nMatching frames to pages...")
     for frame_filename, frame_time in frame_dict.items():
-        #print(f"Matching frame {frame_filename} to page...")
-        frame_to_page_map[frame_filename] = _match_frame_to_page(frame_texts[frame_filename], pages_text) # O(n^2) complexity    
+        matched_page = _match_frame_to_page(frame_texts[frame_filename], pages_text) # O(n^2)
+        if matched_page is None: # If no match is found, associate it with the previous page
+            print(f"Error: Frame {frame_filename} not found. Associating it with the previous page {prev_page}.")
+            matched_page = prev_page
+        frame_to_page_map[frame_filename] = matched_page
+        print(f"Frame {frame_filename} matched to page {frame_to_page_map[frame_filename]}")
+        prev_page = matched_page   
     
     # Replace keys in frame_dict with mapping from frame_to_page_map
     page_to_time_map = {frame_to_page_map[frame_filename]: frame_time for frame_filename, frame_time in frame_dict.items()}
-    
-    # Cleans the /tmp/frames directory
-    for frame_filename in frame_dict.keys():
-        os.remove("tmp/frames/" + frame_filename)
 
     return page_to_time_map

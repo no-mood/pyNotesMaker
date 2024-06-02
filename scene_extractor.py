@@ -20,7 +20,7 @@ def _extract_scenes(filename, threshold, time_file = "tmp/time.txt"):
     frames_dir = "tmp/frames/"
     os.makedirs(os.path.dirname(frames_dir), exist_ok=True)
     
-    frame_name = frames_dir + "%05d.jpg"
+    frame_name = os.path.join(frames_dir, "%05d.jpg")
     command = [
         "ffmpeg", "-i", filename,
         "-filter:v", f"select='gt(scene,{threshold})',showinfo",
