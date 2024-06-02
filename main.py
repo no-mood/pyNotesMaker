@@ -30,5 +30,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-    # Example usage:
-    # python main.py -v my_video.mp4 -p my_pdf.pdf -o output.txt [-s my_subs.vtt] [-t 0.07]
