@@ -13,7 +13,7 @@ The tool performs the following steps:
 The generated file can be used in a document as follows:
 
 <details>
-  <summary>Exampele of output.tex</summary>
+  <summary>Example of output.tex</summary>
   
 ```latex
 \begin{slide}{1}
@@ -98,7 +98,7 @@ python main.py -v <video_file> -p <pdf_file> [-o <output_file>] [-s <subs_file>]
 ```bash
 -v, --video: (Required) The video file to process.
 -p, --pdf: (Required) The PDF file to match with the video scenes.
--o, --output: (Optional) The file to output the results to. If not provided, the default will the video file name with .tex extension.
+-o, --output: (Optional) The file to output the results to. If not provided, the default will the output.tex in the output/ directory.
 -s, --subs: (Optional) The subtitles file. If not provided, subtitles will be generated from the video file.
 -t, --threshold: (Optional) The threshold for scene detection. If not provided, a default value of 0.05 will be used.
 ```
