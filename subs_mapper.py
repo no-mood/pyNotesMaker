@@ -28,9 +28,8 @@ def _match_sub_to_pages(sub, page_dict):
 
 
 def _write_page_subs_to_file(page_subs, save_target):
-    # Group text by end page
     grouped_text = {}
-    for start_page, end_page, text in page_subs:
+    for start_page, end_page, text in page_subs: # Group text by start and end page, but use end page as key
         if end_page not in grouped_text:
             grouped_text[end_page] = text
         else:
@@ -38,16 +37,14 @@ def _write_page_subs_to_file(page_subs, save_target):
 
     # Write grouped text to file
     with open(save_target, 'w') as file:
-        for end_page, text in grouped_text.items():
-            file.write(f"Page: {end_page}, Text: \n{text}\n\n") # Group pages by end page
+        for end_page, text in grouped_text.items(): 
+            # file.write(f"Page: {end_page}, Text: \n{text}\n\n")
+            file.write(f"\\begin{{slide}}{{{end_page}}}\n{text}\n\\end{{slide}}\n\n")
 
 
 
-def match_subs_to_pages(vtt_file, page_dict, save_target='page_subs.txt'):
-
+def match_subs_to_pages(vtt_file, page_dict, save_target):
     subs = _vtt_to_subs(vtt_file)
     page_subs = [_match_sub_to_pages(sub, page_dict) for sub in subs]
-
     _write_page_subs_to_file(page_subs, save_target)
-
     return save_target
