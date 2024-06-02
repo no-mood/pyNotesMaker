@@ -32,9 +32,11 @@ def main():
     outfile = match_subs_to_pages(vtt_file = subs_file, page_dict = page_dict, save_target= out_file)
 
     # Asks user if they want to delete the frames
-    delete_frames = input("Do you want to delete the created files? (y/N): ")
-    if delete_frames.lower() == "y":
-            shutil.rmtree(working_dir)
+    delete_frames = input("Do you want to delete the created files? (Y/n): ")
+    if delete_frames.lower() == "n":
+            print(f"Frames saved to {working_dir}. Delete them manually before running the script again.")
+    else:
+        shutil.rmtree(working_dir)
     
     print(f"Output saved to {outfile}")
     print("Done")
