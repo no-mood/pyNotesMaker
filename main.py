@@ -16,16 +16,13 @@ def main():
     args = parser.parse_args()
     
     output_dir = "output/"
-    
     os.makedirs(os.path.dirname(output_dir), exist_ok=True)
-    os.makedirs(os.path.dirname(frames_dir), exist_ok=True)
-
 
     video_file = args.video
     pdf_file = args.pdf
     subs_file = args.subs if args.subs else make_subs(filename = video_file) # If subs file is not provided, generate it
     threshold = args.threshold
-    out_file = "output/" + (args.output if args.output else args.video.split(".")[0] + ".tex") # If output file is not provided, save it as the video file name with .tex extension
+    out_file = output_dir + (args.output if args.output else args.video.split(".")[0] + ".tex") # If output file is not provided, save it as the video file name with .tex extension
 
     frame_dict = extract_frames(filename = video_file, threshold = threshold)
     page_dict = match_scenes(frame_dict = frame_dict, pdf_file = pdf_file)
