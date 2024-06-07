@@ -53,13 +53,9 @@ The generated file can be used in a document as follows:
 
 \begin{document}
 
-\frame{\titlepage}
+\def\slides{slides/01-Chapter1.pdf}
+\include{output}
 
-\def\slides{slides/01-Chapter2.pdf}
-\include{chapters/chapter1}
-
-\def\slides{slides/02-Chapter2.pdf}
-\include{chapters/chapter2}
 
 \end{document}
 ```
