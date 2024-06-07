@@ -92,15 +92,15 @@ nix develop flake.nix
 You can run pyNotesMaker from the command line with the following arguments:
 
 ```bash
-python main.py -v <video_file> -p <pdf_file> [-o <output_file>] [-s <subs_file>] [-t <threshold>]
+python main.py -v <video_file> -d <pdf_file> [-o <output_file>] [-s <subs_file>] [-t <threshold>]
 ```
 
 ```bash
--v, --video: (Required) The video file to process.
--p, --pdf: (Required) The PDF file to match with the video scenes.
--o, --output: (Optional) The file to output the results to. If not provided, the default will the output.tex in the output/ directory.
--s, --subs: (Optional) The subtitles file. If not provided, subtitles will be generated from the video file.
--t, --threshold: (Optional) The threshold for scene detection. If not provided, a default value of 0.05 will be used.
+-v, --video: (Required) The Video file to process.
+-d, --pdf: (Required) The PDF Document to match with the video scenes.
+-o, --output: (Optional) The file to Output the results to. If not provided, the default will the output.tex in the output/ directory.
+-s, --subs: (Optional) The Subtitles file. If not provided, subtitles will be generated from the video file.
+-t, --threshold: (Optional) The Threshold for scene detection. If not provided, a default value of 0.05 will be used.
 ```
 
 ### Example
