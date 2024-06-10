@@ -102,7 +102,7 @@ python main.py -v <video_file> -d <pdf_file> [-o <output_file>] [-s <subs_file>]
 ### Example
 
 ```bash
-python main.py -v my_video.mp4 -p my_pdf.pdf -o output.tex
+python main.py -v my_video.mp4 -d my_pdf.pdf -o output.tex
 ```
 
 ## License
