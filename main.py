@@ -22,7 +22,7 @@ def main():
     
 
     video_file = args.video
-    pdf_file = args.pdf
+    pdf_file = args.document
     subs_file = args.subs if args.subs else make_subs(filename = video_file) # If subs file is not provided, generate it
     threshold = args.threshold
     out_file = output_dir + (args.output if args.output else "output.tex") # If output file is not provided, save it as "output.tex"
