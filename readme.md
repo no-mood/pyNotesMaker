@@ -91,11 +91,11 @@ You can run pyNotesMaker from the command line with the following arguments:
 python main.py -v <video_file> -d <pdf_file> [-o <output_file>] [-s <subs_file>] [-t <threshold>]
 ```
 
-```bash
+```Python
 -v, --video: (Required) The Video file to process.
--d, --pdf: (Required) The PDF Document to match with the video scenes.
+-d, --document: (Required) The PDF Document to match with the video scenes.
 -o, --output: (Optional) The file to Output the results to. If not provided, the default will the output.tex in the output/ directory.
--s, --subs: (Optional) The Subtitles file. If not provided, subtitles will be generated from the video file.
+-s, --subs: (Optional) The Subtitles file in VTT format. If not provided, subtitles will be generated from the video file.
 -t, --threshold: (Optional) The Threshold for scene detection. If not provided, a default value of 0.05 will be used.
 ```
 

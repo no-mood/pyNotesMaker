@@ -9,8 +9,8 @@ import shutil
 def main():
     parser = argparse.ArgumentParser(description='Process some files.')
     parser.add_argument('-v', '--video', help='Video file', required=True)
-    parser.add_argument('-d', '--pdf', help='PDF Document', required=True)
-    parser.add_argument('-s', '--subs', help='Subs file')
+    parser.add_argument('-d', '--document', help='PDF Document', required=True)
+    parser.add_argument('-s', '--subs', help='Subs file in VTT format. If not provided, it will be generated.')
     parser.add_argument('-t', '--threshold', type=float, default=0.05, help='Threshold for scene detection')
     parser.add_argument('-o', '--output', help='Output file saved in "output/". Default is "output.tex".')
     args = parser.parse_args()
