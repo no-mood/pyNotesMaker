@@ -7,7 +7,11 @@ from thefuzz import fuzz
 
 def _ocr_frame(frame_path):
     # Use OCR to get the text of the frame
-    frame_text = pytesseract.image_to_string(Image.open(frame_path), config='--psm 6', lang='eng')
+    try:
+        frame_text = pytesseract.image_to_string(Image.open(frame_path), config='--psm 3', lang='eng')
+    except Exception as e:
+        print(f"Error with PSM 3: {e}.")
+        frame_text = ""
     return frame_text
 
 
@@ -20,7 +24,7 @@ def _get_pdf_pages_text(pdf_file):
     return pages_text
 
 
-def _match_frame_to_page(frame_text, pages_text, threshold=50):
+def _match_frame_to_page(frame_text, pages_text, threshold=30):
     best_match = 0 + threshold # Start with a threshold to avoid false positives
     best_match_page = None
 
